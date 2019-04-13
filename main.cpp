@@ -17,7 +17,14 @@ int largest_subarray(vector<int>& data){
     return max_so_far;
 }
 
-
+int largest_subarray2(vector<int>& data){
+    int max_so_far = data[0], max_ends_here = data[0];
+    for(int i=1; i<data.size(); i++){
+        max_ends_here = max(max_ends_here, max_ends_here + data[i]);
+        max_so_far = max(max_so_far, max_ends_here);
+    }
+    return max_so_far;
+}
 
 int main(){
 
@@ -25,6 +32,11 @@ int main(){
 
     cout << largest_subarray(data) << endl;
 
+    data.clear();
+
+    data = {-1, -2, -3, -4};
+
+    cout << largest_subarray2(data) << endl;
 
     return 0;
 }
