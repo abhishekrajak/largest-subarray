@@ -7,7 +7,7 @@ using namespace std;
  * Kadane's Algorithm
  * does not work when all elements are (-)ve
  **/
-int largest_subarray(vector<int>& data){
+int largest_subarrayX(vector<int>& data){
     int max_so_far = 0, max_ends_here = 0;
     for(int i : data){
         max_ends_here += i;
@@ -17,7 +17,7 @@ int largest_subarray(vector<int>& data){
     return max_so_far;
 }
 
-int largest_subarray2(vector<int>& data){
+int largest_subarrayY(vector<int>& data){
     int max_so_far = data[0], max_ends_here = data[0];
     for(int i=1; i<data.size(); i++){
         max_ends_here = max(max_ends_here, max_ends_here + data[i]);
@@ -30,13 +30,13 @@ int main(){
 
     vector<int> data = {-2,1,-3,4,-1,2,1,-5,4};
 
-    cout << largest_subarray(data) << endl;
+    cout << largest_subarrayX(data) << endl;
 
     data.clear();
 
     data = {-1, -2, -3, -4};
 
-    cout << largest_subarray2(data) << endl;
+    cout << largest_subarrayY(data) << endl;
 
     return 0;
 }
